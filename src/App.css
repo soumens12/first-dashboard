@@ -287,7 +287,25 @@ background: linear-gradient(159deg, rgba(80,200,120,1) 0%, rgba(62,180,137,1) 10
   margin-top: 60px;
   height: 300px;
 }
-
+.d-flex{
+  display: flex;
+}
+.gap-3
+{
+  gap: 15px;
+}
+.btn{
+  padding: 10px;
+  border-radius: 5px;
+  background: #ddd;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary.active-link{
+  background-color: #007bff;
+  color: #fff;
+}
 
 @media screen and (max-width:991px){
   #sidebar
