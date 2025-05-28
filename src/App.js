@@ -1,24 +1,43 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Products from './Products';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Categories from './Categories';
+import Dashboard from './Dashboard';
+import Customers from './Customers';
+import Reports from './Reports';
 
 function App() {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <div className='grid-container'>
+          <Header toggleSide={toggleSidebar} />
+          <Sidebar openSide={isOpen} toggleSide={toggleSidebar} />
+
+          <main className='main-container'>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/product" element={<Products />} />
+              <Route path="/category" element={<Categories />} />
+              <Route path="/customer" element={<Customers />} />
+              <Route path="/reports" element={<Reports />} />
+            </Routes>
+          </main>
+
+        </div>
+      </Router>
+    </>
+
   );
 }
 
